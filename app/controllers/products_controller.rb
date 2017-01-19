@@ -2,10 +2,14 @@ class ProductsController < ApplicationController
 
   def get_products
 
-    @nike =Product.first
+    @nike = Product.first
+
+    @adidas = Product.second
+
+    @nb = Product.third
 
 
 
-     render "products.html.erb"
+    render "products.html.erb"
   end
 end

@@ -1,3 +1,89 @@
-<h1>Welcome to our shopping site!</h1>
+<div class="container-fluid">
 
-<h2><%=@nike%></h2>
+<div class="title col-xs-12">
+
+<p>Wen for the shoes</p>
+
+</div>
+
+<!-- <div class="nav">
+
+</div> -->
+<div class="container">
+<div class="listing row">
+  <div class="product col-xs-4">
+
+    <h3 class="product_name">
+      <%=@nike.name%>
+    </h3>
+
+    <%= image_tag(@nike.image)%>
+
+    <p class="des">
+      <%=@nike.description%>
+    </p>
+
+    <p class="price">
+      <%=@nike.price%> on sale!
+    </p>
+
+    <button type="button" class="btn btn-success">Buy it Now</button>
+
+
+
+  </div>
+
+  <div class="product col-xs-4">
+
+    <h3 class="product_name">
+      <%=@adidas.name%>
+    </h3>
+
+    <%= image_tag(@adidas.image)%>
+
+    <p class="des">
+      <%=@adidas.description%>
+    </p>
+
+    <p class="price">
+      <%=@adidas.price%> on sale!
+    </p>
+
+    <button type="button" class="btn btn-success">Buy it Now</button>
+
+
+
+  </div>
+
+  <div class="product col-xs-4">
+
+    <h3 class="product_name">
+      <%=@nb.name%>
+    </h3>
+
+    <%= image_tag(@nb.image)%>
+
+    <p class="des">
+      <%=@nb.description%>
+    </p>
+
+    <p class="price">
+      <%=@nb.price%> on sale!
+    </p>
+
+    <button type="button" class="btn btn-success">Buy it Now</button>
+
+
+
+  </div>
+
+
+</div>
+</div>
+
+<div class="footer col-xs-12">
+
+
+</div>
+
+</div>
