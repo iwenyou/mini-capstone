@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  def get_products
+  def index
 
     @nike = Product.first
 
@@ -10,6 +10,14 @@ class ProductsController < ApplicationController
 
 
 
-    render "products.html.erb"
+    render "index.html.erb"
+  end
+
+  def show
+    product_id = params[:id]
+
+    @product = Product.find_by(id:product_id)
+
+    render 'show.html.rb'
   end
 end
