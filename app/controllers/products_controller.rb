@@ -18,6 +18,6 @@ class ProductsController < ApplicationController
 
     @product = Product.find_by(id:product_id)
 
-    render 'show.html.rb'
+    render 'show.html.erb'
   end
 end
