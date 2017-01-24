@@ -2,7 +2,13 @@
 
 <div class="title col-xs-12">
 
-<p>WENY</p>
+<img src="/image/title.png" alt="Title">
+
+<a href="/index" class="btn btn-info" role="button">Home</a>
+
+<a href="/products/new" class="btn btn-info" role="button"> Add a new product</a>
+
+
 
 </div>
 
@@ -14,13 +20,14 @@
   <div class="product col-xs-4">
 
     <h3 class="product_name">
-      <%=@nike.name%>
+      <a href="/products/<%= @top_left.id %>">
+        <%=@top_left.name%>
+      </a>
     </h3>
 
-    <%= image_tag(@nike.image)%>
 
     <p class="price">
-      <%=@nike.price%> on sale!
+      <%=@top_left.price%> on sale!
     </p>
 
     <button type="button" class="btn btn-success">Buy it Now</button>
@@ -32,13 +39,14 @@
   <div class="product col-xs-4">
 
     <h3 class="product_name">
-      <%=@adidas.name%>
+      <a href="/products/<%= @top_middle.id %>">
+        <%=@top_middle.name%>
+      </a>
     </h3>
 
-    <%= image_tag(@adidas.image)%>
 
     <p class="price">
-      <%=@adidas.price%> on sale!
+      <%=@top_middle.price%> on sale!
     </p>
 
     <button type="button" class="btn btn-success">Buy it Now</button>
@@ -50,13 +58,14 @@
   <div class="product col-xs-4">
 
     <h3 class="product_name">
-      <%=@nb.name%>
+      <a href="/products/<%= @top_right.id %>">
+        <%=@top_right.name%>
+      </a>
     </h3>
 
-    <%= image_tag(@nb.image)%>
 
     <p class="price">
-      <%=@nb.price%> on sale!
+      <%=@top_right.price%> on sale!
     </p>
 
     <button type="button" class="btn btn-success">Buy it Now</button>
