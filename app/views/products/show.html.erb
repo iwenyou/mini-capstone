@@ -1,8 +1,19 @@
+<div class="container">
 <h2><a href="/index"><%= @product.name %></a></h2>
-<h2><%= image_tag(@product.image) %></h2>
 <h2>Price: <%= @product.price %></h2>
-<h2>Description: <%= @product.description %></h2>
+<p>Description:
+  <ul>
+  <% @product.description_list.each do |description| %>
+  <li><%= description %></li>
+  <% end %>
+  </ul>
+</p>
 
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
 <input type="submit" value="destory product">
 <% end %>
+
+<a href="/index" class="btn btn-info" role="button">Home</a>
+
+<a href="/products/#{@product.id}/edit" class="btn btn-info" role="button">edit</a>
+</div>

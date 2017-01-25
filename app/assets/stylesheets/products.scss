@@ -4,24 +4,37 @@
 
 
 body {
-  font-family: 'Pacifico';
+  font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  background-color: transparent;
 }
 
-img {
-  max-width: 300px;
-  max-height: 200px;
+#icon {
+  background-color: transparent;
+  background: transparent;
+  border-color: transparent;
+}
+
+.navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+}
+
+.clear {
+  background-color: transparent;
+  background: transparent;
+  border-color: transparent;
 }
 
 a {
   size: 2em;
 }
-.title {
-  background-color: black;
-  color: white;
-  text-align: left;
-  padding: 30px;
-  padding-left: 60px;
-  font-size: 3em;
+
+.navbar-brand{
+  background-color: transparent;
+  background: transparent;
+  font-size: 2em;
+  padding: 20px;
 }
 
 .listing {
@@ -29,8 +42,7 @@ a {
 }
 
 .product_name {
-  background-color: black;
-  color: white;
+  color: black;
   padding: 20px;
 }
 
