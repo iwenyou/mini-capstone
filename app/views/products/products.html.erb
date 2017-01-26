@@ -4,7 +4,7 @@
     <% @product.each_slice(3) do |three_product| %>
     <div class="row">
         <% three_product.each do |product| %>
-        <div class="col-lg-4 col-xs-12">
+        <div class="col-md-3 col-xs-6">
             <div class="well">
                 <a href="products/<%= product.id %>">
                     <%= product.name %>

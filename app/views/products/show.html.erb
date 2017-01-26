@@ -1,19 +1,31 @@
-<div class="container">
-<h2><a href="/index"><%= @product.name %></a></h2>
-<h2>Price: <%= @product.price %></h2>
-<p>Description:
-  <ul>
-  <% @product.description_list.each do |description| %>
-  <li><%= description %></li>
-  <% end %>
-  </ul>
-</p>
+<div class="container-fluid">
+  <div>
+    <p class="name">
+        <%= @product.name %>
+    </p>
+  </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">...</div>
+        <div class="col-xs-12 col-md-6">
+            <p class="price">Price: $
+                <%= @product.price %>
+                <%= @product.sale_message %></p>
+            <p class="tax money">tax: $
+                <%= @product.tax %></p>
+            <p class="total money">Total: $
+                <%= @product.total %></p>
+            <%= form_tag "/products/#{@product.id}", method: :delete do %>
+            <input type="submit" value="destory product">
+            <% end %>
 
-<%= form_tag "/products/#{@product.id}", method: :delete do %>
-<input type="submit" value="destory product">
-<% end %>
+            <a href="/index" class="btn btn-info" role="button">Home</a>
 
-<a href="/index" class="btn btn-info" role="button">Home</a>
-
-<a href="/products/#{@product.id}/edit" class="btn btn-info" role="button">edit</a>
+            <a href="/products/#{@product.id}/edit" class="btn btn-info" role="button">edit</a>
+        </div>
+    </div>
+    <div class="description">
+        <p class="description">
+            Description:<%= @product.description %>
+        </p>
+    </div>
 </div>

@@ -1,10 +1,20 @@
 class Product < ApplicationRecord
-  def product_list
-    return products.split(",")
+  def sale_message
+    if price.to_f < 2
+      return "Discount item!"
+    else
+      return "Everyday value!"
+    end
   end
 
-  def description_list
-    return description.split(",")
+  def tax
+    return @tax = price.to_f * 0.09
+
+  end
+
+  def total
+    return total = @tax + price.to_f
+
   end
 
 end

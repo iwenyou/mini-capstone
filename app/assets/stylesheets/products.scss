@@ -20,21 +20,25 @@ body {
    border-color: transparent;
 }
 
-.clear {
-  background-color: transparent;
-  background: transparent;
-  border-color: transparent;
+.jumbotron {
+  background: url("http://www.hd-freewallpapers.com/latest-wallpapers/find-me-pictures-of-puppies-wallpaper.jpg") no-repeat center center fixed;
+  background-size:100% auto;
+  min-height: 450px;
 }
 
 a {
   size: 2em;
 }
 
+.navbar {
+  margin: 45px;
+}
+
 .navbar-brand{
   background-color: transparent;
   background: transparent;
-  font-size: 2em;
-  padding: 20px;
+  font-size: 2.5em;
+  border-color: gray;
 }
 
 .listing {
@@ -49,12 +53,27 @@ a {
 .product {
 }
 
-.des {}
-
+.name {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  font-size: 3em;
+  margin-left: 100px;
+}
 .price {
   padding: 10px;
   margin: 10px;
   font-size: 2em;
+}
+
+.money {
+  padding: 10px;
+  margin: 10px;
+  font-size: 2em;
+}
+
+.description {
+  padding-top: 50px;
 }
 
 .footer {
