@@ -11,13 +11,17 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 col-md-4">
+  <% @product.each_slice(3) do |three_product| %>
+  <div class="row">
+      <% three_product.each do |product| %>
+      <div class="col-sm-12 col-md-4">
             <div class="thumbnail">
-                <img src="..." alt="...">
+                <img src="<%= product.image %>" alt="...">
                 <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
+                  <a href="products/<%= product.id %>">
+                      <%= product.name %>
+                  </a>
+                  <p>$ <%= product.price %></p>                    <p>...</p>
                     <p>
                         <a href="#" class="btn btn-primary" role="button">Button</a>
                         <a href="#" class="btn btn-default" role="button">Button</a>
@@ -25,36 +29,10 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-12 col-md-4">
-            <div class="thumbnail">
-                <img src="..." alt="...">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p>
-                        <a href="#" class="btn btn-primary" role="button">Button</a>
-                        <a href="#" class="btn btn-default" role="button">Button</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-12 col-md-4">
-            <div class="thumbnail">
-                <img src="..." alt="...">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p>
-                        <a href="#" class="btn btn-primary" role="button">Button</a>
-                        <a href="#" class="btn btn-default" role="button">Button</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 

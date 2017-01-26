@@ -6,10 +6,13 @@
         <% three_product.each do |product| %>
         <div class="col-md-3 col-xs-6">
             <div class="well">
+              <div class="thumbnail">
+                <%= image_tag 'product.image' %>
+              </div>
                 <a href="products/<%= product.id %>">
                     <%= product.name %>
                 </a>
-                <p><%= product.price %></p>
+                <p>$ <%= product.price %></p>
             </div>
         </div>
         <% end %>

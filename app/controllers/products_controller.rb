@@ -1,14 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-
-    @top_left = Product.first
-
-    @top_middle = Product.second
-
-    @top_right = Product.third
-
-
+    @product = Product.all
 
     render "index.html.erb"
   end
@@ -61,7 +54,7 @@ class ProductsController < ApplicationController
 
     flash[:success] = "Product Successly updated!"
 
-    redirect_to "/products/#{product_id}"
+    redirect_to "/products/@product_id"
 
   end
 
