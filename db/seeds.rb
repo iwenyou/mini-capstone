@@ -8,7 +8,7 @@
 Product.destroy_all
 
 Product.create([
-  {name: "Shiba dull", price: "49", image: "dull.jpg", description: "size: small,height: 15 cm,Original Design,color:red white black"},
-  {name: "Shiba keychain", price: "27", image: "keychain.jpg", description: "size: small,height: 15 cm,Original Design,color:red white black"},
-  {name: "Shiba changebag", price: "69", image: "changebag.jpg", description: "size: small,height: 15 cm,Original Design,color:red white black"},
+  {name: "Shiba dull", price:"49" , image: "dull.jpg", description: "size: small,height: 15 cm,Original Design,color:red white black"},
+  {name: "Shiba keychain", price:"39" , image: "keychain.jpg", description: "size: small,height: 15 cm,Original Design,color:red white black"},
+  {name: "Shiba changebag", price:"69" , image: "changebag.jpg", description: "size: small,height: 15 cm,Original Design,color:red white black"},
   ])

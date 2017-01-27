@@ -2,12 +2,16 @@
 
 one:
   name: MyString
-  price: MyString
+  price: 1
   image: MyString
-  description: MyString
+  description: MyText
+  in_stock: MyString
+  boolean: MyString
 
 two:
   name: MyString
-  price: MyString
+  price: 1
   image: MyString
-  description: MyString
+  description: MyText
+  in_stock: MyString
+  boolean: MyString

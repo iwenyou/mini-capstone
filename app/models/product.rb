@@ -14,7 +14,9 @@ class Product < ApplicationRecord
 
   def total
     return total = @tax + price.to_f
-
   end
 
+  def divide_description
+    return description.split(",")
+  end
 end

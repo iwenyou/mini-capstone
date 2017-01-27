@@ -9,6 +9,14 @@ class ProductsController < ApplicationController
   def products
     @product = Product.all
 
+    if params[:sort]
+     @product = Product.all.order(params[:sort] => params[:sort_order])
+   end
+
+   if params[:discount]
+     @product = Product.where("price < ?", 50)
+   end
+
     render "products.html.erb"
   end
 
@@ -32,7 +40,19 @@ class ProductsController < ApplicationController
 
     @product = Product.find_by(id:product_id)
 
+    if product_id == "random"
+      @product = Product.all.sample
+    end
+
     render 'show.html.erb'
+  end
+
+  def search
+    search_term = params[:seach]
+    @product = Product.where("name LIKE ?", "%#{search_term}%")
+
+    render :products
+
   end
 
   def edit
