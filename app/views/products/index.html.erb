@@ -16,7 +16,9 @@
       <% three_product.each do |product| %>
       <div class="col-sm-12 col-md-4">
             <div class="thumbnail">
-                <img src="<%= product.image %>" alt="...">
+              <% @image.each do |image| %>
+                <img src="<%= image.url  %>" alt="...">
+              <% end %>
                 <div class="caption">
                   <a href="products/<%= product.id %>">
                       <%= product.name %>

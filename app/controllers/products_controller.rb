@@ -17,6 +17,8 @@ class ProductsController < ApplicationController
      @product = Product.where("price < ?", 50)
    end
 
+
+
     render "products.html.erb"
   end
 
@@ -30,23 +32,17 @@ class ProductsController < ApplicationController
     price: params[:price],
     description: params[:description])
     flash[:success] = "Product Successly created!"
-    redirect_to "/products"
+    redirect_to "/products/#{@product_id}"
   end
 
 
 
   def show
-    product_id = params[:id]
-
-    
-
-    @product = Product.find_by(id:product_id)
-
-    if product_id == "random"
-      @product = Product.all.sample
-    end
-
-
+    @product = Product.find_by(id: params[:id])
+#returns single instance supplier hash
+    @supplier = @product.supplier
+#returns array with image hashes
+    @images = @product.images
 
     render 'show.html.erb'
   end
