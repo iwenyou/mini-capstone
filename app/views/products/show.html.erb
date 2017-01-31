@@ -12,7 +12,7 @@
                 <%= @product.sale_message %></p>
             <p class="tax money">tax: $
                 <%= @product.tax %></p>
-            <p class="total money">Total: $ 
+            <p class="total money">Total: $
                 <%= @product.total %></p>
             <%= form_tag "/products/#{@product.id}", method: :delete do %>
             <input type="submit" value="destory product">
@@ -28,7 +28,7 @@
         <% @product.divide_description.each do |line| %>
         <li class="description_lines"><%= line %></li>
         <% end %>
-
+        <li><p>Supplied By: <%= @product.supplier.name %></p></li>
       </ul>
     </div>
 </div>

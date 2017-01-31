@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  
+  belongs_to :supplier
+
   def sale_message
     if price.to_f < 2
       return "Discount item!"
