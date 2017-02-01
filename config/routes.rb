@@ -21,4 +21,16 @@ Rails.application.routes.draw do
   get "/images/new" => "images#new"
 
   post "/images" => "images#create"
+
+  get "/signup" => "users#new"
+
+  post "/users" => "users#create"
+
+  get  "users" => "users#users"
+
+  get "/login" => "sessions#new"
+
+  post "/login" => "sessions#create"
+
+  get "/logout" => "sessions#destroy"
 end

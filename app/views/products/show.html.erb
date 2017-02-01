@@ -5,7 +5,11 @@
     </p>
   </div>
     <div class="row">
-        <div class="col-xs-12 col-md-6">...</div>
+        <div class="col-xs-12 col-md-6">
+          <% @images.each do |image| %>
+              <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
+            <% end %>
+        </div>
         <div class="col-xs-12 col-md-6">
             <p class="price">Price: $
                 <%= @product.price %>

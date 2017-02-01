@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
+Supplier.destroy_all
+Image.destroy_all
 
 
 Product.create([
@@ -20,7 +22,7 @@ Supplier.create([
   ])
 
 Image.create([
-  {url:"dull.jpg",product_id:"1"},
-  {url:"keychain.jpg",product_id:"2"},
-  {url:"changebag.jpg",product_id:"3"}
+  {url:"http://cdn3-www.dogtime.com/assets/uploads/gallery/shiba-inu-dog-breed-picutres/10-profile.jpg",product_id:"1"},
+  {url:"http://cdn3-www.dogtime.com/assets/uploads/gallery/shiba-inu-dog-breed-picutres/10-profile.jpg",product_id:"2"},
+  {url:"http://cdn3-www.dogtime.com/assets/uploads/gallery/shiba-inu-dog-breed-picutres/10-profile.jpg",product_id:"3"}
   ])

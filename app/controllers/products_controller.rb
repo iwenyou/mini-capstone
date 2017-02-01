@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
 
   def index
+    if session[:count] == nil
+      session[:count] = 0
+    end
+    session[:count] += 1
+    @visit_count = session[:count]
     @product = Product.all
 
     render "index.html.erb"
@@ -17,9 +22,6 @@ class ProductsController < ApplicationController
      @product = Product.where("price < ?", 50)
    end
 
-
-
-    render "products.html.erb"
   end
 
   def new
@@ -27,12 +29,14 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.create(
-    name: params[:name],
-    price: params[:price],
-    description: params[:description])
-    flash[:success] = "Product Successly created!"
-    redirect_to "/products/#{@product_id}"
+    @product = Product.create(
+      name: params[:name],
+      description: params[:description],
+      price: params[:price]
+
+      )
+      flash[:success] = "Product Created"
+    redirect_to "/products/#{@product.id}"
   end
 
 

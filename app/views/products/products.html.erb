@@ -35,8 +35,7 @@
         <div class="col-md-3 col-xs-6">
             <div class="well">
                 <div class="thumbnail">
-                    <%= image_tag 'product.image' %>
-                </div>
+                  <img src="<%= product.images.first.url %>" alt="<%= product.name %>" class="img-responsive product_single_image">                </div>
                 <a href="products/<%= product.id %>">
                     <%= product.name %>
                 </a>
