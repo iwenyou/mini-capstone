@@ -1,0 +1,10 @@
+<h2>order conformation:</h2>
+
+<p>User: <%= @order.user.name %> </p>
+<p>Order id: <%= @order.id %></p>
+<p>Product: <%= @order.product.name %> </p>
+<p>Quantity: <%= @order.quantity %></p>
+<p>Subtotal: <%= @order.subtotal %> </p>
+<p>Tax: <%= @order.tax %> </p>
+<p>Total: <%= @order.total %></p>
+<img src="<%= @order.product.images.first.url %>" alt="">

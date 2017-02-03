@@ -4,12 +4,12 @@
         <%= @product.name %>
     </p>
   </div>
+
     <div class="row">
         <div class="col-xs-12 col-md-6">
-          <% @images.each do |image| %>
-              <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
-            <% end %>
+              <img src="<%= @images.first.url %>" alt="<%= @product.name %>" class="img-responsive">
         </div>
+
         <div class="col-xs-12 col-md-6">
             <p class="price">Price: $
                 <%= @product.price %>
@@ -22,17 +22,37 @@
             <input type="submit" value="destory product">
             <% end %>
 
-            <a href="/index" class="btn btn-info" role="button">Home</a>
+            <a href="/images/new" class="btn btn-info" role="button">Add a new image</a>
 
             <a href="/products/<%=@product.id%>/edit" class="btn btn-info" role="button">edit</a>
+
+
+            <%= form_tag '/order', method: :post do %>
+
+              <div>
+                <%= label_tag :quantity %>
+                <%= text_field_tag :quantity %>
+                <%= label_tag :user_id %>
+                <%= label_tag :product_id %>
+                <input type="number" name="product_id" value="<%= @product.id %>">
+                <%= submit_tag "buy it now" %>
+              </div>
+            <% end %>
         </div>
     </div>
+
     <div class="description">
       <ul>Description:
         <% @product.divide_description.each do |line| %>
         <li class="description_lines"><%= line %></li>
         <% end %>
         <li><p>Supplied By: <%= @product.supplier.name %></p></li>
+        <% @product.category.each do |category| %>
+        <li><%= category.name %></li>
+        <% end %>
       </ul>
+      <% @images.each do |image| %>
+          <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
+      <% end %>
     </div>
 </div>

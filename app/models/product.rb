@@ -2,6 +2,9 @@ class Product < ApplicationRecord
 
   belongs_to :supplier
   has_many :images
+  has_many :catagorized_products
+  has_many :category, through: :catagorized_products
+
 
   def sale_message
     if price.to_f < 2

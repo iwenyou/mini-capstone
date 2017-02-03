@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    product_id = params[:product_id]
+    product_id = params[:product]['product_id']
     image = Image.create(
     url: params[:url],
     product_id: product_id)

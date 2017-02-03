@@ -1,34 +1,40 @@
-<h1>New Recipe:</h1>
-<%= form_tag "/products", :class => "form-horizontal", method: :post do %>
 
-<div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="name" placeholder="Name">
-    </div>
-</div>
-<div class="form-group">
-    <label for="price" class="col-sm-2 control-label">Price</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="price" placeholder="Price">
-    </div>
-</div>
-<div class="form-group">
-    <label for="description" class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="description" placeholder="Description">
-    </div>
-</div>
-<div class="form-group">
-    <label for="in_stock" class="col-sm-2 control-label">In Stock</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="in_stock" placeholder="In_Stock">
-    </div>
-</div>
-<div class="form-group">
-    <label for="supplier_id" class="col-sm-2 control-label">Supplier id</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="supplier_id" placeholder="supplier_id">
-    </div>
-</div>
-<% end %>
+    <section>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="product_single">
+            <h1>Create a new nerdy product:</h1>
+
+            <%= form_tag '/products', method: :post do %>
+
+              <div>
+                <%= label_tag :name %>
+                <%= text_field_tag :name %>
+              </div>
+
+              <div>
+                <%= label_tag :price %>
+                <%= text_field_tag :price %>
+              </div>
+
+              <div>
+                <%= label_tag :description %>
+                <%= text_field_tag :description %>
+              </div>
+
+              <div>
+                <%= label_tag :supplier %>
+                <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name %>
+              </div>
+
+              <div>
+                <%= label_tag :image %>
+                <%= text_field_tag :image %>
+              </div>
+
+              <%= submit_tag "Add new product" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
