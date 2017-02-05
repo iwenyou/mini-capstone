@@ -4,7 +4,7 @@
             <p>Product list:</p>
             <%= form_tag "/search", method: :post do %>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="find a product" name="search">
+                <input type="text" class="form-control" placeholder="find a product" name="search">
             </div>
             <button type="submit" class="btn btn-default">Search</button>
             <% end %>
@@ -22,13 +22,15 @@
                         <a href="/products?sort=price&sort_order=asc">Price (low to high)</a>
                     </li>
                     <li>
-                      <a href="/products?cheap=true">Discount item</a>
+                        <a href="/products?cheap=true">Discount item</a>
                     </li>
                     <li>
                         <a href="/products/random">Random item</a>
                     </li>
                     <% @categories.each do |category| %>
-                    <li><a href="/products?category=<%= category.name %>"><%= category.name %></a></li>
+                    <li>
+                        <a href="/products?category=<%= category.name %>"><%= category.name %></a>
+                    </li>
                     <% end %>
                 </ul>
             </div>
@@ -41,7 +43,8 @@
         <div class="col-md-3 col-xs-6">
             <div class="well">
                 <div class="thumbnail">
-                  <img src="<%= product.images.first.url %>" alt="<%= product.name %>" class="img-responsive product_single_image">                </div>
+                    <img src="<%= product.images.first.url %>" alt="<%= product.name %>" class="img-responsive product_single_image">
+                </div>
                 <a href="/products/<%= product.id %>">
                     <%= product.name %>
                 </a>
