@@ -8,8 +8,11 @@ class Order < ApplicationRecord
 
   def calculate_subtotal(products)
     subtotal = 0
+
     products.each do |product|
-      subtotal += product.price
+      subtotal = product.product.price * product.quantity + subtotal
     end
+
+    return subtotal
   end
 end

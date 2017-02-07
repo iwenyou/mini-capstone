@@ -23,4 +23,14 @@ class CartedProductsControllerController < ApplicationController
     @carted_products = CartedProduct.where(user_id: @user,status: "carted")
   end
 
+
+  def destroy
+    carted_product_id = params[:id]
+    @carted_product = CartedProduct.find_by(id: carted_product_id)
+    @carted_product.status = "removed"
+    @carted_product.save
+    flash[:success] = "Product removed from cart"
+    redirect_to "/cart/index"
+  end
+
 end

@@ -42,4 +42,6 @@ Rails.application.routes.draw do
 
   get "/cart/index" => "carted_products_controller#index"
 
+  delete "/cart/:id" => "carted_products_controller#destroy"
+
 end

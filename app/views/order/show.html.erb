@@ -1,10 +1,14 @@
 <h2>order conformation:</h2>
+<p>Order: <%= @order.id %> </p>
 
-<p>User: <%= @order.user.name %> </p>
-<p>Order id: <%= @order.id %></p>
-<p>Product: <%= @order.product.name %> </p>
-<p>Quantity: <%= @order.quantity %></p>
+<ul>
+  <% @products.each do |product| %>
+  <li>Product: <%= product.product.name %> </li>
+  <span>Quantity: <%= product.quantity %></span>
+  <% end %>
+</ul>
+
+
 <p>Subtotal: <%= @order.subtotal %> </p>
 <p>Tax: <%= @order.tax %> </p>
 <p>Total: <%= @order.total %></p>
-<img src="<%= @order.product.images.first.url %>" alt="">

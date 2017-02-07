@@ -1,16 +1,22 @@
 class OrderController < ApplicationController
 
   def create
-    @user = current_user.id
+    user_id = current_user.id
 
-    @carted_products = CartedProduct.where(user_id: @user,status: "carted")
+    carted_products = CartedProduct.where(user_id: user_id,status: "carted")
 
-    order = Order.create(
-    user_id: @user,
-    subtotal: calculate_subtotal(@carted_products),
-    tax: (subtotal * 0.09),
-    total: (subtotal + tax)
-    )
+    order = Order.new(user_id: user_id)
+    order.subtotal = order.calculate_subtotal(carted_products)
+    order.tax = order.subtotal * 0.09
+    order.total = order.subtotal + order.tax
+
+    order.save
+
+    carted_products.each do |product|
+      product.status = "purchased"
+      product.order_id = order.id
+      product.save
+    end
 
     flash[:success] = "Order Created"
     redirect_to "/order/#{order.id}"
@@ -20,6 +26,8 @@ class OrderController < ApplicationController
     order_id = params[:id]
 
     @order = Order.find_by(id: order_id)
+
+    @products = CartedProduct.where(order_id: order_id)
 
   end
 

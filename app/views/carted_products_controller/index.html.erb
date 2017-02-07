@@ -11,6 +11,9 @@
         <% @carted_products.each do |product| %>
         <li>Product Name:  <%= product.product.name %></li>
         <span>Quantity:  <%= product.quantity %></span>
+        <%= form_tag "/cart/#{product.id}", method: :delete do %>
+        <input type="submit" value="delete product">
+        <% end %>
         <% end %>
       </ul>
     </div>
