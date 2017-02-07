@@ -27,7 +27,7 @@
             <a href="/products/<%=@product.id%>/edit" class="btn btn-info" role="button">edit</a>
 
 
-            <%= form_tag '/order', method: :post do %>
+            <%= form_tag '/cart', method: :post do %>
 
               <div>
                 <%= label_tag :quantity %>
@@ -35,7 +35,7 @@
                 <%= label_tag :user_id %>
                 <%= label_tag :product_id %>
                 <input type="number" name="product_id" value="<%= @product.id %>">
-                <%= submit_tag "buy it now" %>
+                <%= submit_tag "Add to Cart" %>
               </div>
             <% end %>
         </div>

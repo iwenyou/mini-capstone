@@ -1,19 +1,15 @@
 class OrderController < ApplicationController
 
   def create
-    product_id = params[:product_id]
+    @user = current_user.id
 
-    quantity = params[:quantity]
-
-    product = Product.find_by(id: product_id)
+    @carted_products = CartedProduct.where(user_id: @user,status: "carted")
 
     order = Order.create(
-    quantity: quantity,
-    user_id: current_user.id,
-    product_id: product_id,
-    subtotal: (product.price * quantity.to_f),
-    tax: (product.tax * quantity.to_f),
-    total: (product.total * quantity.to_f)
+    user_id: @user,
+    subtotal: calculate_subtotal(@carted_products),
+    tax: (subtotal * 0.09),
+    total: (subtotal + tax)
     )
 
     flash[:success] = "Order Created"

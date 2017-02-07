@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   has_many :images
   has_many :catagorized_products
   has_many :category, through: :catagorized_products
+  has_many :carted_product
+
 
 
   def sale_message

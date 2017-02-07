@@ -1,8 +1,15 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :product
-  
+  has_many :carted_product
+
   def quantify(number,quantity)
     number * quantity.to_f
+  end
+
+  def calculate_subtotal(products)
+    subtotal = 0
+    products.each do |product|
+      subtotal += product.price
+    end
   end
 end
