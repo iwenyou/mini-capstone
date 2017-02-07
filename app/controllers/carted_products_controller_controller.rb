@@ -20,16 +20,23 @@ class CartedProductsControllerController < ApplicationController
 
   def index
     @user = current_user.id
-    @carted_products = CartedProduct.where(user_id: @user,status: "carted")
+
+    if current_user.carted_product.where(status: "carted").any?
+      @carted_products = CartedProduct.where(user_id: @user,status: "carted")
+    else
+      flash[:warning] = "You have no item in your cart"
+      redirect_to "/index"
+    end
   end
 
 
   def destroy
     carted_product_id = params[:id]
     @carted_product = CartedProduct.find_by(id: carted_product_id)
-    @carted_product.status = "removed"
-    @carted_product.save
-    flash[:success] = "Product removed from cart"
+    @carted_product.update(status: "removed")
+    # @carted_product.status = "removed"
+    # @carted_product.save
+    flash[:warning] = "Product removed from cart"
     redirect_to "/cart/index"
   end
 

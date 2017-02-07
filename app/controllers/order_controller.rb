@@ -12,11 +12,13 @@ class OrderController < ApplicationController
 
     order.save
 
-    carted_products.each do |product|
-      product.status = "purchased"
-      product.order_id = order.id
-      product.save
-    end
+    # carted_products.each do |product|
+    #   product.status = "purchased"
+    #   product.order_id = order.id
+    #   product.save
+    # end
+
+    carted_products.update_all(status: 'pruchased', order_id: order.id)
 
     flash[:success] = "Order Created"
     redirect_to "/order/#{order.id}"
