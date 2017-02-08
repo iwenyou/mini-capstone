@@ -8,17 +8,17 @@ body {
   background-color: transparent;
 }
 
-#icon {
-  background-color: transparent;
-  background: transparent;
-  border-color: transparent;
-}
+// #icon {
+//   background-color: transparent;
+//   background: transparent;
+//   border-color: transparent;
+// }
 
-.navbar {
-   background-color: transparent;
-   background: transparent;
-   border-color: transparent;
-}
+// .navbar {
+//    background-color: transparent;
+//    background: transparent;
+//    border-color: transparent;
+// }
 
 .jumbotron {
   background: url("http://www.hd-freewallpapers.com/latest-wallpapers/find-me-pictures-of-puppies-wallpaper.jpg") no-repeat center center fixed;
@@ -28,6 +28,10 @@ body {
 
 a {
   size: 2em;
+}
+
+a:link {
+    color: red;
 }
 
 .navbar {
@@ -77,6 +81,5 @@ a {
 }
 
 .footer {
-  background-color: black;
-  color: white;
+
 }

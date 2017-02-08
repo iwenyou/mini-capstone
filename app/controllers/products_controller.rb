@@ -55,13 +55,13 @@ class ProductsController < ApplicationController
       price: params[:price],
       supplier_id: params[:supplier]['supplier_id']
       )
-    @product.images.create(url: params[:image], product_id: @product.id)
+    #@product.images.create(url: params[:image], product_id: @product.id)
 
     if @product.save
       flash[:success] = "Product Created"
       redirect_to "/products/#{@product.id}"
     else
-      :new
+      render :new
     end
   end
 
