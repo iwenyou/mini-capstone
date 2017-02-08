@@ -31,7 +31,7 @@
 
               <div>
                 <%= label_tag :quantity %>
-                <%= text_field_tag :quantity %>
+                <input type="text" name="quantity" id="quantity" placeholder="1">
                 <%= label_tag :user_id %>
                 <%= label_tag :product_id %>
                 <input type="number" name="product_id" value="<%= @product.id %>">
