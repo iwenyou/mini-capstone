@@ -1,5 +1,7 @@
 class OrderController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     user_id = current_user.id
 
@@ -25,6 +27,11 @@ class OrderController < ApplicationController
   end
 
   def show
+
+    if @order.user_id != current_user.id
+      redirect_to "/index"
+    end
+
     order_id = params[:id]
 
     @order = Order.find_by(id: order_id)

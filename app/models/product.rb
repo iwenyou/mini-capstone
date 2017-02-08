@@ -6,6 +6,12 @@ class Product < ApplicationRecord
   has_many :category, through: :catagorized_products
   has_many :carted_product
 
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :description, presence: true
+  validates :description, length: { maximum: 500 }
+  validates :price, presence: true
+  validates :price, numericality: { greater_than: 0 }
 
 
   def sale_message
@@ -28,4 +34,5 @@ class Product < ApplicationRecord
   def divide_description
     return description.split(",")
   end
+
 end

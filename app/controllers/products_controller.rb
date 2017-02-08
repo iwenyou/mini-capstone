@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  before_action :authenticate_admin!, except: [:index, :show, :products, :search]
+
   def index
     if session[:count] == nil
       session[:count] = 0
@@ -41,10 +43,12 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
     render "new.html.erb"
   end
 
   def create
+
     @product = Product.create(
       name: params[:name],
       description: params[:description],
@@ -53,8 +57,12 @@ class ProductsController < ApplicationController
       )
     @product.images.create(url: params[:image], product_id: @product.id)
 
+    if @product.save
       flash[:success] = "Product Created"
-    redirect_to "/products/#{@product.id}"
+      redirect_to "/products/#{@product.id}"
+    else
+      :new
+    end
   end
 
 
@@ -76,6 +84,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+
     product_id = params[:id]
 
     @product = Product.find_by(id: product_id)
@@ -84,6 +93,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+
     product_id = params[:id]
 
     @product = Product.find_by(id: product_id)
@@ -99,6 +109,7 @@ class ProductsController < ApplicationController
   end
 
   def destory
+
     product_id = params[:id]
 
     @product = Product.find_by(id: product_id)
