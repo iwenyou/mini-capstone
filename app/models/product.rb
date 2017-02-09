@@ -1,38 +1,34 @@
 class Product < ApplicationRecord
+    belongs_to :supplier
+    has_many :images
+    has_many :catagorized_products
+    has_many :category, through: :catagorized_products
+    has_many :carted_product
 
-  belongs_to :supplier
-  has_many :images
-  has_many :catagorized_products
-  has_many :category, through: :catagorized_products
-  has_many :carted_product
+    validates :name, presence: true
+    validates :name, uniqueness: true
+    validates :description, presence: true
+    validates :description, length: { maximum: 500 }
+    validates :price, presence: true
+    validates :price, numericality: { greater_than: 0 }
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
-  validates :description, presence: true
-  validates :description, length: { maximum: 500 }
-  validates :price, presence: true
-  validates :price, numericality: { greater_than: 0 }
-
-
-  def sale_message
-    if price.to_f < 2
-      return "Discount item!"
-    else
-      return "Everyday value!"
+    def sale_message
+        if price.to_f < 2
+            'Discount item!'
+        else
+            'Everyday value!'
+        end
     end
-  end
 
-  def tax
-    return @tax = price.to_f * 0.09
+    def tax
+        @tax = price.to_f * 0.09
+    end
 
-  end
+    def total
+        total = @tax + price.to_f
+    end
 
-  def total
-    return total = @tax + price.to_f
-  end
-
-  def divide_description
-    return description.split(",")
-  end
-
+    def divide_description
+        description.split(',')
+    end
 end

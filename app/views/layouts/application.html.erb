@@ -36,9 +36,11 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right nav-pills" role="tablist">
                         <li>
-                          <% if is_user? %>
-                          <a href="">Welcome, <%= current_user.name %> !</a>
-                          <% end %>
+                            <% if is_user? %>
+                            <a href="">Welcome,
+                                <%= current_user.name %>
+                                !</a>
+                            <% end %>
                         </li>
                         <li>
                             <a href="/products">Products</a>
@@ -47,11 +49,11 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                              <% if is_admin? %>
+                                <% if is_admin? %>
                                 <li>
                                     <a href="/products/new">Add Product</a>
                                 </li>
-                              <% end %>
+                                <% end %>
 
                                 <% if !current_user %>
                                 <li>
@@ -60,7 +62,7 @@
                                 <li>
                                     <a href="/login">Log in</a>
                                 </li>
-                                <% else %>
+                            <% else %>
                                 <li>
                                     <a href="logout">Log out</a>
                                 </li>
@@ -68,7 +70,9 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/cart/index">Shopping Cart <span class="badge"><%= @cart_count %></span></a>
+                            <a href="/cart/index">Shopping Cart
+                                <span class="badge"><%= @cart_count %></span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -77,8 +81,6 @@
 
         <%= yield %>
 
-        <div class="footer">
-
-        </div>
+        <div class="footer"></div>
     </body>
 </html>

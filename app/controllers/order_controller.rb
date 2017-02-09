@@ -1,43 +1,37 @@
 class OrderController < ApplicationController
+    before_action :authenticate_user!
 
-  before_action :authenticate_user!
+    def create
+        user_id = current_user.id
 
-  def create
-    user_id = current_user.id
+        carted_products = CartedProduct.where(user_id: user_id, status: 'carted')
 
-    carted_products = CartedProduct.where(user_id: user_id,status: "carted")
+        order = Order.new(user_id: user_id)
+        order.subtotal = order.calculate_subtotal(carted_products)
+        order.tax = order.subtotal * 0.09
+        order.total = order.subtotal + order.tax
 
-    order = Order.new(user_id: user_id)
-    order.subtotal = order.calculate_subtotal(carted_products)
-    order.tax = order.subtotal * 0.09
-    order.total = order.subtotal + order.tax
+        order.save
 
-    order.save
+        # carted_products.each do |product|
+        #   product.status = "purchased"
+        #   product.order_id = order.id
+        #   product.save
+        # end
 
-    # carted_products.each do |product|
-    #   product.status = "purchased"
-    #   product.order_id = order.id
-    #   product.save
-    # end
+        carted_products.update_all(status: 'pruchased', order_id: order.id)
 
-    carted_products.update_all(status: 'pruchased', order_id: order.id)
-
-    flash[:success] = "Order Created"
-    redirect_to "/order/#{order.id}"
-  end
-
-  def show
-
-    if @order.user_id != current_user.id
-      redirect_to "/index"
+        flash[:success] = 'Order Created'
+        redirect_to "/order/#{order.id}"
     end
 
-    order_id = params[:id]
+    def show
+        redirect_to '/index' if @order.user_id != current_user.id
 
-    @order = Order.find_by(id: order_id)
+        order_id = params[:id]
 
-    @products = CartedProduct.where(order_id: order_id)
+        @order = Order.find_by(id: order_id)
 
-  end
-
+        @products = CartedProduct.where(order_id: order_id)
+    end
 end
