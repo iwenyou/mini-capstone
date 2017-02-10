@@ -1,32 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/index" => "products#index"
 
-  post "/search" => "products#search"
+  root to: "products#index"
 
-  get "/products" => "products#products"
+  resources :products
 
-  get "/products/new" => "products#new"
+  resources :images
 
-  post "/products" => "products#create"
+  resources :users
 
-  get "/products/:id" => "products#show"
-
-  get "/products/:id/edit" => "products#edit"
-
-  patch "/products/:id" => "products#update"
-
-  delete "/products/:id" => "products#destory"
-
-  get "/images/new" => "images#new"
-
-  post "/images" => "images#create"
-
-  get "/signup" => "users#new"
-
-  post "/users" => "users#create"
-
-  get  "users" => "users#users"
+  #resources :session
 
   get "/login" => "sessions#new"
 
@@ -34,9 +17,7 @@ Rails.application.routes.draw do
 
   get "/logout" => "sessions#destroy"
 
-  post "/order" => 'order#create'
-
-  get "/order/:id" => "order#show"
+  resources :order
 
   post "/cart" => "carted_products_controller#create"
 

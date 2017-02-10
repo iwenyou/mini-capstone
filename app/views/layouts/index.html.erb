@@ -1,0 +1,44 @@
+<!-- <div class="nav">
+
+</div> -->
+
+<!-- page body -->
+
+<div class="jumbotron">
+    <div class="container">
+        ...
+    </div>
+</div>
+
+<div class="container-fluid">
+    <% @product.each_slice(3) do |three_product| %>
+    <div class="row">
+        <% three_product.each do |product| %>
+        <div class="col-sm-12 col-md-4">
+            <div class="thumbnail">
+                <img src="<%= product.images.first.url %>" alt="<%= product.name %>">
+                <div class="caption">
+                    <a href="products/<%= product.id %>">
+                        <%= product.name %>
+                    </a>
+                    <p>$
+                        <%= product.price %></p>
+                    <p>...</p>
+                    <p>
+                        <a href="#" class="btn btn-primary" role="button">Button</a>
+                        <a href="#" class="btn btn-default" role="button">Button</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+</div>
+</div>
+
+<!-- page footer -->
+<div class="footer col-xs-12">
+<h2>Visit
+    <%= @visit_count %></h2>
+</div>

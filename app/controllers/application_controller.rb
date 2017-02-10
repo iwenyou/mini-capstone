@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_admin!
-        redirect_to '/index' unless current_user && current_user.admin
+        redirect_to '/' unless current_user && current_user.admin
     end
 
     before_action :calculate_cart_count

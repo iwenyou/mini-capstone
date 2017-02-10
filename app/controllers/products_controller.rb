@@ -1,23 +1,14 @@
 class ProductsController < ApplicationController
     before_action :authenticate_admin!, except: [:index, :show, :products, :search]
 
+    # def index
+    #     session[:count] = 0 if session[:count].nil?
+    #     session[:count] += 1
+    #     @visit_count = session[:count]
+    #     @product = Product.all
+    # end
+
     def index
-        session[:count] = 0 if session[:count].nil?
-        session[:count] += 1
-        @visit_count = session[:count]
-        @product = Product.all
-
-        render 'index.html.erb'
-    end
-
-    def search
-        search_term = params[:search]
-        # ping database to find recipes that are similar to search term
-        @product = Product.where('name LIKE ?', "%#{search_term}%")
-        render :products
-    end
-
-    def products
         @product = Product.all
 
         if params[:sort]
@@ -33,11 +24,17 @@ class ProductsController < ApplicationController
         end
 
         @categories = Category.all
-      end
+    end
+
+    def search
+        search_term = params[:search]
+        # ping database to find recipes that are similar to search term
+        @product = Product.where('name LIKE ?', "%#{search_term}%")
+        #render :products
+    end
 
     def new
         @product = Product.new
-        render 'new.html.erb'
     end
 
     def create
@@ -67,8 +64,6 @@ class ProductsController < ApplicationController
         @images = @product.images
 
         @product = Product.all.sample if product_id == 'random'
-
-        render 'show.html.erb'
     end
 
     def edit
@@ -76,7 +71,6 @@ class ProductsController < ApplicationController
 
         @product = Product.find_by(id: product_id)
 
-        render 'edit.html.erb'
     end
 
     def update
